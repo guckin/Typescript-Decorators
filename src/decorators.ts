@@ -15,12 +15,12 @@ function formatMethodLoggerMessage(methodLoggingInfo: MethodLoggingInfo):string 
             `result: ${methodLoggingInfo.result}`
 }
 
-export function logMethod(target, propertyKey: string, descriptor: PropertyDescriptor) {
+export function logMethod(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
     const original = descriptor.value;
-    descriptor.value = (...args) => {
+    descriptor.value = (...args: []) => {
         const beforeTime: number = Date.now();
-        const returnValue = original.apply(this, args);
-        const afterTime: number = Date.now()
+        const returnValue = original(args);
+        const afterTime: number = Date.now();
         console.log(
             formatMethodLoggerMessage(
                 {

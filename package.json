@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node ./bin/test.js",
+    "test": "node ./build/dist/test/*.test.js",
     "build": "tsc",
-    "build:test": "npm run build && npm run test"
+    "build:test": "npm run build && npm run test",
+    "clean": "rm -rf build"
   },
   "author": "",
   "license": "ISC",
